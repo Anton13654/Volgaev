@@ -1,16 +1,17 @@
 package com.example.volgaev.domain
 
-import com.example.volgaev.data.FilmFromServer
-import com.example.volgaev.data.database.models.Film
+import com.example.volgaev.data.database.models.FavouriteFilm
 import com.example.volgaev.data.database.models.ShortFilm
 
 interface FilmsRepository {
 
-    fun addFilmOnFavourites(film: Film)
+    fun addFilmOnFavourites(id: Int)
 
     fun getListFavourites(): List<ShortFilm>
 
-    fun getListFromServer(): List<ShortFilm>
+    suspend fun getListFromServer(): List<ShortFilm>
 
-    fun getFilmFromServer(): Film
+    fun getFilmFromServer(id: Int): FavouriteFilm
+
+    fun getFilmFromBD(id: Int): FavouriteFilm?
 }

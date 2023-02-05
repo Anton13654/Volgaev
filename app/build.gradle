@@ -84,5 +84,15 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    def retrofitVersion = '2.9.0'
+    def okHttpVersion = '5.0.0-alpha.2'
+    def serializationConverterVersion = '0.8.0'
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$serializationConverterVersion"
 }
 

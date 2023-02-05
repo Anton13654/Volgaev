@@ -1,8 +1,8 @@
 package com.example.volgaev.data.database.models
 
 class ShortFilm (
-    id: Int,
-    name: String,
-    year: Int,
-    poster: Int
+    val id: Int,
+    val name: String,
+    val year: String,
+    val poster: String
         )

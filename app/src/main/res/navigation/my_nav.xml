@@ -18,5 +18,9 @@
         android:id="@+id/filmFragment"
         android:name="com.example.volgaev.presentation.film.FilmFragment"
         android:label="fragment_film"
-        tools:layout="@layout/fragment_film" />
+        tools:layout="@layout/fragment_film" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

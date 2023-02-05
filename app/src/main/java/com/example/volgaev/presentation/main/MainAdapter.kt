@@ -7,18 +7,26 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.volgaev.R
-import com.example.volgaev.data.database.models.Film
 import com.example.volgaev.data.database.models.ShortFilm
+var LONG_CLICK = true
+var SHORT_CLICK = false
 
-class MainAdapter(var onClick:(Film)->Unit): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(var onClick:(Boolean, Int)->Unit): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     var listFilms: List<ShortFilm> = listOf()
     set(value){
         field = value
         notifyDataSetChanged()
     }
+
+    var listId: List<Int> = listOf()
+        set(value){
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.model_of_list_film, parent, false)
@@ -28,8 +36,20 @@ class MainAdapter(var onClick:(Film)->Unit): RecyclerView.Adapter<MainAdapter.Ma
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val currentElement = listFilms[position]
 
-        //holder.name.text = currentElement.na
-        //holder.miniDescription.text = currentElement.description
+        if(currentElement.id in listId){
+            holder.starButton.setImageResource(R.drawable.ic_baseline_star_24)
+        }else{
+            holder.starButton.isVisible = false
+        }
+        holder.name.text = currentElement.name
+        holder.miniDescription.text = currentElement.year.toString()
+        holder.layout.setOnClickListener{
+            onClick(SHORT_CLICK, currentElement.id)
+        }
+        holder.layout.setOnLongClickListener {
+            onClick(LONG_CLICK, currentElement.id)
+            true
+        }
 
     }
 
