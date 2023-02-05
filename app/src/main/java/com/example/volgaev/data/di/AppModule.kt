@@ -20,7 +20,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Path
+import retrofit2.http.Url
 import javax.inject.Singleton
+const val PATH = "https://kinopoiskapiunofficial.tech"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -59,7 +62,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideServerStateApi(okHttpClient: OkHttpClient): Api =  Retrofit.Builder()
-        .baseUrl("https://kinopoiskapiunofficial.tech/api/v2.2/")
+        .baseUrl(PATH)
         .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
         .build()
         .create(Api::class.java)

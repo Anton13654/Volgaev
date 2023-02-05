@@ -8,4 +8,5 @@ import javax.inject.Inject
 class FilmViewModel @Inject constructor(
 
 ): ViewModel() {
+
 }

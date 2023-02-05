@@ -1,6 +1,7 @@
 package com.example.volgaev.data
 
 import android.content.Context
+import android.util.Log
 import com.example.volgaev.data.database.FilmsDao
 import com.example.volgaev.data.database.models.FavouriteFilm
 import com.example.volgaev.data.database.models.Film
@@ -33,7 +34,7 @@ class FilmsRepositoryImpl(
     override suspend fun getListFromServer(): List<ShortFilm> {
         var shortInfo: MutableList<ShortFilm> = mutableListOf()
 
-        for(i in 0..9){
+        for(i in 1..10){
             shortInfo += api.getPopular20(i).films.toListShortInfo()
         }
 
