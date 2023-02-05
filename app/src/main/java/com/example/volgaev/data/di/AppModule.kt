@@ -6,6 +6,8 @@ import com.example.volgaev.data.FilmsRepositoryImpl
 import com.example.volgaev.data.database.FilmsDao
 import com.example.volgaev.data.database.FilmsDatabase
 import com.example.volgaev.domain.FilmsRepository
+import com.example.volgaev.domain.GetListFavouritesUseCase
+import com.example.volgaev.domain.GetListFromServerUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,6 +18,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideGetListFavouritesUseCase(repository: FilmsRepository): GetListFavouritesUseCase = GetListFavouritesUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun provideGetListFromServerUseCase(repository: FilmsRepository): GetListFromServerUseCase = GetListFromServerUseCase(repository)
+
 
     @Provides
     @Singleton

@@ -10,10 +10,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.volgaev.R
 import com.example.volgaev.data.database.models.Film
+import com.example.volgaev.data.database.models.ShortFilm
 
 class MainAdapter(var onClick:(Film)->Unit): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    var listFilms: List<Film> = listOf()
+    var listFilms: List<ShortFilm> = listOf()
     set(value){
         field = value
         notifyDataSetChanged()
@@ -27,8 +28,8 @@ class MainAdapter(var onClick:(Film)->Unit): RecyclerView.Adapter<MainAdapter.Ma
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val currentElement = listFilms[position]
 
-        holder.name.text = currentElement.name
-        holder.miniDescription.text = currentElement.description
+        //holder.name.text = currentElement.na
+        //holder.miniDescription.text = currentElement.description
 
     }
 
