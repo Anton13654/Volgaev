@@ -11,7 +11,7 @@ interface FilmsRepository {
 
     suspend fun getListFromServer(): List<ShortFilm>
 
-    fun getFilmFromServer(id: Int): FavouriteFilm
+    suspend fun getFilmFromServer(id: Int): FavouriteFilm
 
     fun getFilmFromBD(id: Int): FavouriteFilm?
 }

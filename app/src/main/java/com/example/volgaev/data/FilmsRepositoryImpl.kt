@@ -22,13 +22,7 @@ class FilmsRepositoryImpl(
     override fun getListFavourites(): List<ShortFilm> {
 
         return filmsDao.takeListFavourites().toListShortInfo()
-        /*return listOf(
-            ShortFilm(0, "Шерлок", 1990, 0),
-            ShortFilm(1, "Чебурашка", 1990, 0),
-            ShortFilm(2, "Аватар", 1990, 0)
-        )
 
-         */
     }
 
     override suspend fun getListFromServer(): List<ShortFilm> {
@@ -41,8 +35,9 @@ class FilmsRepositoryImpl(
         return shortInfo
     }
 
-    override fun getFilmFromServer(id: Int): FavouriteFilm {
-       return FavouriteFilm(0,"dfg", "dsgf", "dsgf", "dg","dg", "353")
+    override suspend fun getFilmFromServer(id: Int): FavouriteFilm {
+        var newFilm = api.getFilmInfo(id)
+        return FavouriteFilm(newFilm.kinopoiskId, newFilm.nameRu, newFilm.posterUrl, newFilm.description, newFilm.genres[0].toString(), newFilm.countries[0].toString(), newFilm.year.toString())
     }
 
     override fun getFilmFromBD(id: Int): FavouriteFilm? {

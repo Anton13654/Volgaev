@@ -11,6 +11,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.volgaev.R
 import com.example.volgaev.data.database.models.ShortFilm
+import com.squareup.picasso.Picasso
+
 var LONG_CLICK = true
 var SHORT_CLICK = false
 
@@ -42,6 +44,9 @@ class MainAdapter(var onClick:(Boolean, Int)->Unit): RecyclerView.Adapter<MainAd
             holder.starButton.isVisible = false
         }
         holder.name.text = currentElement.name
+        Picasso.get()
+            .load(currentElement.poster)
+            .into(holder.poster);
         holder.miniDescription.text = currentElement.year.toString()
         holder.layout.setOnClickListener{
             onClick(SHORT_CLICK, currentElement.id)

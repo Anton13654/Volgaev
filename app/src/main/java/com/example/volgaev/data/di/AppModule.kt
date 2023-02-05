@@ -7,10 +7,7 @@ import com.example.volgaev.data.FilmsRepositoryImpl
 import com.example.volgaev.data.HeaderInterceptor
 import com.example.volgaev.data.database.FilmsDao
 import com.example.volgaev.data.database.FilmsDatabase
-import com.example.volgaev.domain.AddFilmOnFavouritesUseCase
-import com.example.volgaev.domain.FilmsRepository
-import com.example.volgaev.domain.GetListFavouritesUseCase
-import com.example.volgaev.domain.GetListFromServerUseCase
+import com.example.volgaev.domain.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +25,10 @@ const val PATH = "https://kinopoiskapiunofficial.tech"
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideGetFilmFromServerUseCase(repository: FilmsRepository): GetFilmFromServerUseCase = GetFilmFromServerUseCase(repository)
 
     @Provides
     @Singleton
